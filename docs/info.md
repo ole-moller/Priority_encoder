@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+Prioritizes 8-bit binary number and outputs is the decimal result in the 7-segment display.
 
 ## How to test
 
-Explain how to use your project
+Have fun playing with switches and observe 7-segment display.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+None
