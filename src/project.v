@@ -3,7 +3,7 @@
 // If no data bits are set then all 7-segments are off, but decimal point (output none) is on.
 // Implemented with 8-bit priority encoder followed by 3-bit to 7-segment decoder.
 
-module Priority_encoder_to_7-segment_display (
+module Priority_encoder_to_7_segment_display (
     input  logic data[7:0],
     output logic segments[6:0],
     output logic none);
