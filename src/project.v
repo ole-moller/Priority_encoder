@@ -1,27 +1,45 @@
-/*
- * Copyright (c) 2024 Your Name
- * SPDX-License-Identifier: Apache-2.0
- */
+// Find index of most significant data bit set to 1 among 8 data bits, and output result to 7-segment display.
+// Binary data bit 7 has highest priority, bit 0 lowest.
+// If no data bits are set then all 7-segments are off, but decimal point (output none) is on.
+// Implemented with 8-bit priority encoder followed by 3-bit to 7-segment decoder.
 
-`default_nettype none
+module Priority_encoder_to_7-segment_display (
+    input  logic data[7:0],
+    output logic segments[6:0],
+    output logic none);
 
-module tt_um_example (
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-    input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low to reset
-);
+    // Interface between priority encoder and octal-to-7-segment driver
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+    logic [2:0] code;
 
-  // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+    // 7-segment encoding of digits
+
+    logic [6:0] digit [8] = '{
+    //     gfedcba
+	7'b0111111, // zero
+	7'b0000110, // one
+	7'b1011011, // two
+	7'b1001111, // three
+	7'b1100110, // four
+	7'b1101101, // five
+	7'b1111101, // six
+	7'b0000111  // seven
+	};
+
+    // Priority encoding
+
+    code[2] = data[7] | data[6] | data[5] | data[4];
+    code[1] = data[7] | data[6] | ~data[5] & ~data[4] & (data[3] | data[2]);
+    code[0] = data[7] | ~data[6] & (data[5] | ~data[4] & (data[3] | ~data[2] & data[1]));
+
+    // Output to 7-segment display with decimal point that indicates no data
+
+    always_comb
+	begin
+	none = ~data[7] & ~data[6] & ~data[5] & ~data[4] & ~data[3] & ~data[2] & ~data[1] & ~data[0];
+	if (none) begin	segments = 7'b0000000;
+	    end else begin
+	segments = digit[code]; end;
+	end
 
 endmodule
