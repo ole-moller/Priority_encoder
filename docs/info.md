@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Prioritizes 8-bit binary number and outputs the decimal result in the 7-segment display.
+Prioritizes 8-bit binary number and outputs the decimal result in the 7-segment display. If no bits are set (number equals zero) then a decimal point rather than a digit is displayed.
 
 ## How to test
 
