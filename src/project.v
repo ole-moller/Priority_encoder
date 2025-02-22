@@ -5,14 +5,6 @@
 // Implemented with 8-bit priority encoder followed by 3-bit to 7-segment decoder.
 
 module tt_um_Priority_encoder_to_7_segment_display (input [7:0] data, output [6:0] segments, output none);
-    // input  [7:0] data,
-    // output [6:0] segments,
-    // output none;
-
-// module tttt_um_Priority_encoder_to_7_segment_display (data, segments, none);
-    // input  [7:0] data,
-    // output [6:0] segments,
-    // output none;
 
     // Interface between priority encoder and 7-segment decoder
 
