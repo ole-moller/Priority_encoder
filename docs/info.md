@@ -1,6 +1,7 @@
 ## How it works
 
-Prioritizes 8-bit binary number and outputs the decimal result in the 7-segment display. If no bits are set (number equals zero) then a decimal point rather than a digit is displayed.
+Inputs and prioritizes 8-bit binary number and converts and outputs the decimal result in 7-segment format.
+If no bits are set (number equals zero) then a decimal point rather than a digit is displayed.
 
 ## How to test
 
