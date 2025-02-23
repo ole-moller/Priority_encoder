@@ -15,16 +15,17 @@ module tt_um_priority_encoder_to_7_segment_display (input [7:0] data, output [6:
     //wire [6:0] digit [2:0] = '{
     reg [6:0] digit [7:0];
     initial begin
-	//            gfedcba
-	digit[0] = 7'b0111111, // zero
-	digit[1] = 7'b0000110, // one
-	digit[2] = 7'b1011011, // two
-	digit[3] = 7'b1001111, // three
-	digit[4] = 7'b1100110, // four
-	digit[5] = 7'b1101101, // five
-	digit[6] = 7'b1111101, // six
-	digit[7] = 7'b0000111  // seven
+	//Segment     gfedcba
+	digit[0] = 7'b0111111; // zero
+	digit[1] = 7'b0000110; // one
+	digit[2] = 7'b1011011; // two
+	digit[3] = 7'b1001111; // three
+	digit[4] = 7'b1100110; // four
+	digit[5] = 7'b1101101; // five
+	digit[6] = 7'b1111101; // six
+	digit[7] = 7'b0000111;  // seven
 	// };
+    end
 
     // Priority encoding
 
