@@ -4,7 +4,29 @@
 // If no data bits are set then all 7-segments are off, but output pin None (decimal point dp) is on instead.
 // Implemented with 8-bit priority encoder followed by 3-bit to 7-segment decoder.
 
-module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data, output [6:0] segments, output none);
+// module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data, output [6:0] segments, output none);
+
+module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+    input  wire       clk,      // clock
+    input  wire       rst_n);   // reset_n - low to reset
+
+    // Connect template signals to internal signals. Wonder whether I got this right.
+
+    assign data =  ui_in;
+    assign uo_out[6:0] = digit;
+    assign uo_out[7] = none;
+    assign uio_oe = 0;
+    assign uio_out = 0;
+
+    // Unused utility and user inputs
+
+    wire _unused = &{clk, ena, rst_n, uio_in};
 
     // Interface between priority encoder and 7-segment decoder
 
