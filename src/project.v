@@ -6,7 +6,7 @@
 
 // module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data, output [6:0] segments, output none);
 
-module Priority_encoder_to_7_segment_decoder (
+module priority_encoder_to_7_segment_decoder (
     input  wire [7:0] data,	// Dedicated inputs
     output wire [6:0] digit,	// Dedicated outputs
     output wire [7] no_data); 	// Dedicated outputs
