@@ -16,7 +16,10 @@ module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data,
   //  input  wire       clk,      // clock
   //  input  wire       rst_n);   // reset_n - low to reset
 
-    // Connect template signals to internal signals. Wonder whether I got this right.
+    // Declare and connect template signals to internal signals. Wonder whether I got this right.
+
+    wire [7:0] data;
+    wire none;
 
     assign data =  ui_in;
     assign uo_out[6:0] = digit;
