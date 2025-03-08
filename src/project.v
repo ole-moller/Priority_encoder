@@ -31,10 +31,6 @@ module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
     assign uio_oe = 0;
     assign uio_out = 0;
 
-    // Unused utility and user inputs
-
-    wire _unused = &{clk, ena, rst_n, uio_in};
-
     // 7-segment decoding of digits
 
     initial begin
