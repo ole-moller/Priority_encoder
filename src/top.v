@@ -5,7 +5,7 @@
 
 `define default_netname none
 
-module tt_um_Ole_Henrik_Moller_Priority encoder (
+module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -21,8 +21,7 @@ module tt_um_Ole_Henrik_Moller_Priority encoder (
   assign uio_out = 0;
   assign uio_oe  = 0;
   
-  // Insert Priority encoder logic here 
-  signed_unsigned_4x4_bit_multiplier mult( 
+Priority_encoder_to_7_segment_decoder( 
     .multiplicand(ui_in[7:4]),
     .multiplier(ui_in[3:0]),
     .signed_mode(uio_in[0]),
