@@ -25,7 +25,7 @@ module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
   assign uio_out = 0;
   assign uio_oe  = 0;
   
-  Priority_encoder_to_7_segment_decoder ( 
+  priority_encoder_to_7_segment_decoder ( 
     .data(ui_in[7:0]),
     .digit(uo_out[6:0]),
     .no_data(uo_out[7]) );
