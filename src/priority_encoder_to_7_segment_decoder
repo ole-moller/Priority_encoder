@@ -1,7 +1,7 @@
 // 8-bit priority encoder with 7-segment decoder.
 // Find index of most significant input data bit set to 1, and output result as 7-segment code (segments abcdefg).
 // Binary data bit 7 has highest priority, bit 0 lowest.
-// If no data bits are set then all 7-segments are off, but output pin None (decimal point dp) is on instead.
+// If no data bits are set then all 7-segments are off, while output pin no_data (decimal point dp) is on instead.
 // Implemented with 8-bit priority encoder followed by 3-bit to 7-segment decoder.
 
 // module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data, output [6:0] segments, output none);
