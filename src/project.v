@@ -61,6 +61,6 @@ module priority_encoder_to_7_segment_decoder (
     // Output to 7-segment display with decimal point that indicates no data
 
     assign no_data = ~data[7] & ~data[6] & ~data[5] & ~data[4] & ~data[3] & ~data[2] & ~data[1] & ~data[0];
-	assign segments = (no_data) ? 7'b0000000 : digit[code];
+    assign segments = (no_data) ? 7'b0000000 : digit[code];
 
 endmodule
