@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Ole Henrik Møller
+ * Copyright (c) 2025 Ole Henrik Møller
  * SPDX-License-Identifier: Apache-2.0
  */
 
@@ -16,7 +16,7 @@ module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-    // Unused utility and user inputs (avoid warnings)
+  // Unused utility and user inputs (avoid warnings)
 
   wire _unused = &{clk, ena, rst_n, uio_in};
 
@@ -27,7 +27,7 @@ module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
   
   Priority_encoder_to_7_segment_decoder ( 
     .data(ui_in[7:0]),
-    .digits(uo_out[6:0]),
-    .none(uo_out[7]) );
+    .digit(uo_out[6:0]),
+    .no_data(uo_out[7]) );
 
 endmodule
