@@ -6,32 +6,39 @@
 
 // module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data, output [6:0] segments, output none);
 
-module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
-    input  wire       clk,      // clock
-    input  wire       rst_n);   // reset_n - low to reset
+module Priority_encoder_to_7_segment_decoder (
+    input  wire [7:0] data,	// Dedicated inputs
+    output wire [6:0] digit,	// Dedicated outputs
+    output wire [7] no_data); 	// Dedicated outputs
 
-    // Declare internal signals
+//module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
+//    input  wire [7:0] ui_in,    // Dedicated inputs
+//    output wire [7:0] uo_out,   // Dedicated outputs
+//    input  wire [7:0] uio_in,   // IOs: Input path
+//    output wire [7:0] uio_out,  // IOs: Output path
+//    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+//    input  wire       ena,      // always 1 when the design is powered, so you can ignore it
+//    input  wire       clk,      // clock
+//    input  wire       rst_n);   // reset_n - low to reset
 
-    wire [7:0] data;		// Input to priority encoder
-    wire [2:0] code;		// Interface between priority encoder and 7-segment decoder
-    wire [6:0] digit [7:0];	// Output to 7-segment display
-    wire none;			// Output to decimal point of 7-segment display
+//    // Declare internal signals
 
-    // Connect template signals to internal signals
+//    wire [7:0] data;		// Input to priority encoder
+//    wire [2:0] code;		// Interface between priority encoder and 7-segment decoder
+//    wire [6:0] digit [7:0];	// Output to 7-segment display
+//    wire no_data;		// Output to decimal point of 7-segment display
 
-    assign data =  ui_in;
-    assign uo_out[6:0] = digit;
-    assign uo_out[7] = none;
-    assign uio_oe = 0;
-    assign uio_out = 0;
+//    // Connect template signals to internal signals
+
+//    assign data = ui_in;
+//    assign uo_out[6:0] = digit;
+//    assign uo_out[7] = none;
+//    assign uio_oe = 0;
+//    assign uio_out = 0;
 
     // 7-segment decoding of digits
+
+    wire [6:0] digit [7:0];
 
     initial begin
 	//Segment     gfedcba
@@ -53,7 +60,7 @@ module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (
 
     // Output to 7-segment display with decimal point that indicates no data
 
-    assign none = ~data[7] & ~data[6] & ~data[5] & ~data[4] & ~data[3] & ~data[2] & ~data[1] & ~data[0];
+    assign no_data = ~data[7] & ~data[6] & ~data[5] & ~data[4] & ~data[3] & ~data[2] & ~data[1] & ~data[0];
     assign segments = (none) ? 7'b0000000 : digit[code];
 
 endmodule
