@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = top.v priority_encoder_to_7_segment_decoder.v
 
 ifneq ($(GATES),yes)
 
