@@ -8,7 +8,7 @@
 
 module priority_encoder_to_7_segment_decoder (
     input  wire [7:0] data,	// Dedicated inputs
-    output wire [6:0] digit,	// Dedicated outputs
+    output wire [6:0] segments,	// Dedicated outputs
     output wire no_data); 	// Dedicated output
 
     // Interface between priority encoder and 7-segment decoder
