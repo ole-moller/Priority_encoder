@@ -4,8 +4,6 @@
 // If no data bits are set then all 7-segments are off, while output pin no_data (decimal point dp) is on instead.
 // Implemented with 8-bit priority encoder followed by 3-bit to 7-segment decoder.
 
-// module tt_um_ole_moller_priority_encoder_to_7_segment_decoder (input [7:0] data, output [6:0] segments, output none);
-
 module priority_encoder_to_7_segment_decoder (
     input  wire [7:0] data,	// Dedicated inputs
     output wire [6:0] segments,	// Dedicated outputs
