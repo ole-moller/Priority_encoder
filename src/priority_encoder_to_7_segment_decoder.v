@@ -15,7 +15,7 @@ module priority_encoder_to_7_segment_decoder (
 
     // 7-segment decoding of digits
 
-    wire [6:0] digit [7:0];
+    reg [6:0] digit [7:0];
 
     initial begin
 	//Segment     gfedcba
